@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/HfKates/ContentInter.git", :tag => "#{s.version}" }
 
-  s.preserve_paths = 'Demos', '.cocoapods.yml', "#{s.name}.podspec.json", "#{s.name}/src/oc/module.modulemap", "#{s.name}/src/oc/ZXXContentInteractOCHeader.h"
+  #s.preserve_paths = 'Demos', '.cocoapods.yml', "#{s.name}.podspec.json", "#{s.name}/src/oc/module.modulemap", "#{s.name}/src/oc/ZXXContentInteractOCHeader.h"
 
   s.swift_versions = ['5.0']
   
@@ -46,8 +46,10 @@ Pod::Spec.new do |s|
     core.dependency 'Toast', '~>4.0.0'
 
     core.vendored_frameworks = "ZXXContentInteract.framework" 
-    core.public_header_files = "ZXXContentInteract.framework/Headers/**/*.h"
-    core.resource_bundles = "ZXXContentInteractBundle.bundle"
+    #core.public_header_files = "ZXXContentInteract.framework/Headers/*.h"
+    core.resource_bundles = {
+      "#{s.name}" => ["ZXXContentInteractBundle/*.{jpg,png,xib,strings,plist,bundle}"]
+    }
     
   end
 end
